@@ -1,0 +1,35 @@
+<script>
+  const loaderOpen = document.querySelector(".table");
+  const loaderClose = document.querySelector(".close");
+  const loader = document.querySelector(".loader");
+  const content = document.getElementById("content");
+  const btn = document.querySelector(".btn");
+  
+  btn.addEventListener("click", () => {
+    // ローダーを開く
+    loader.style.visibility = "visible";
+    loaderOpen.classList.add("loaded");
+  
+    setInterval(() => {
+      const CLASSNAME = "-visible";
+      const TIMEOUT = 1500;
+      const target = document.querySelector(".loader > h2.title");
+      target.classList.add(CLASSNAME);
+      setTimeout(() => {
+        target.classList.remove(CLASSNAME);
+      }, TIMEOUT);
+    }, TIMEOUT * 2);
+  
+    setTimeout(() => {
+      // ローダーを消す
+      loader.classList.add("loaded");
+      // コンテンツを表示
+      content.style.display = "block";
+    }, 2500);
+  });
+  
+  loaderClose.addEventListener("click", () => {
+    // 閉じる
+    google.script.host.close();
+  });
+  </script>
